@@ -1,2 +1,4 @@
 # project1-forecasting
 Forecasting Seattle Unemployment
+
+One of the strongest drivers of loan defaults is unemployment. Lenders forecast unemployment to prepare reserves to cover these losses. Seattle unemployment seems to display a clear seasonal pattern year-by-year, with a gradual rise from 3.2% in 2022 to around 5% in 2026. This project forecasts unemployment in the Seattle area for the next 12 months, and compares simple benchmark models to more advanced ones.
