@@ -1,13 +1,13 @@
 library(tidyverse)
 
-series+id <- "SEAT653URN"
+series_id <- "SEAT653URN"
 url <- paste0("https://fred.stlouisfed.org/graph/fredgraph.csv?id=", series_id)
 
-raw <- reasd_csv(url)
+raw <- read_csv(url)
 glimpse(raw)
 
 df <- raw |> rename(date = observation_date, value = SEAT653URN)
-dir.create("date", showWarning = FALSE)
+dir.create("data", showWarning = FALSE)
 write_csv(df, "data/SEAT653URN.csv")
 
 ### Summary and plot
