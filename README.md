@@ -19,4 +19,5 @@ One of the strongest drivers of loan defaults is unemployment. Lenders forecast 
 ---
 ## Files
 01_pull_and_plot.R: downloads the data from FRED, summarizes it, and makes the charts above
+
 SEAT653URN.csv: saved copy of the data
