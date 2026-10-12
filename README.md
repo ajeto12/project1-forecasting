@@ -6,4 +6,4 @@ One of the strongest drivers of loan defaults is unemployment. Lenders forecast 
 
 Data: FRED series SEAT653URN (monthly, not seasonally adjusted).
 
-! + [Seattle unemployment] + (seattle_unemployment.png)
+!+[Seattle unemployment]+(seattle_unemployment.png)
