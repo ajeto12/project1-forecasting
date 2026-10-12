@@ -26,6 +26,7 @@ ggplot(df, aes(date, value)) +
        subtitle = "Monthly, not seasonally adjusted",
        x = NULL, y = "Percent", caption = "Source: FRED (SEAT653URN)"
        )
+ggsave("seattle_unemployment.png", width = 8, height = 4.5)
 
 # You can see the volatility of the unemployment rate, and significant events like the '08 crisis, '20 pandemic
 # The minimum is right before the pandemic. The max within this timeline is early quarantine in '20.
@@ -41,6 +42,7 @@ df |>
   ggplot(aes(date, value)) +
   geom_line() + geom_point(size = 1) +
   labs(title = "seattle unemployment, last 5 years", x = NULL, y = "Percent")
+ggsave("seattle_last5.png", width = 8, height = 4.5)
 
 ## In the last 5 years summary:
 # Unemployment jumps up leading into the new year, due to seasonal jobs, climate-dependent jobs
@@ -60,6 +62,7 @@ yearly <- df |>
 ggplot(yearly, aes(year, avg))+
   geom_line() +
   labs(title = "seattle unemployment, yearly average", x = NULL, y = "Percent")
+ggsave("seattle_yearly.png", width = 8, height = 4.5)
 
 ## Yearly Averages Takeaways
 # Irregular patterns are cyclical, regular ones are seasonal
