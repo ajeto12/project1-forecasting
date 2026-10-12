@@ -10,13 +10,13 @@ One of the strongest drivers of loan defaults is unemployment. Lenders forecast 
 ## First Look
 ![Seattle unemployment](seattle_unemployment.png)
 *Figure 1. Seattle-area unemployment rate, monthly, 1994–2026. Source: FRED.*
-
+---
 ![Last_5_Unemployment](seattle_last5.png)
 *Figure 2. Last 5 Years, monthly, Aug 2021 to Aug 2026. The repeating within-year pattern is seasonality. Source: FRED.*
-
+---
 ![Seattle_Yearly](seattle_yearly.png)
 *Figure 3. Yearly average. 2026 covers Jan–Aug only. 1994-2026. Source: FRED.*
-
+---
 ## Files
 01_pull_and_plot.R: downloads the data from FRED, summarizes it, and makes the charts above
 SEAT653URN.csv: saved copy of the data
