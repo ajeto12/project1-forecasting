@@ -1,11 +1,11 @@
-# install.packages("fpp3")   # one time only; it takes a minute
+# install.packages("fpp3")
 library(tidyverse)
 library(fpp3)
 
 un <- read_csv("https://fred.stlouisfed.org/graph/fredgraph.csv?id=SEAT653URN") |>
   rename(date = 1, rate = 2) |>
   mutate(rate = as.numeric(rate), month = yearmonth(date)) |>
-  fill(rate, .direction = "down") |>      # fills the Oct 2025 NA with Sep's value, as a stopgap
+  fill(rate, .direction = "down") |>      # filling the Oct 2025 NA with Sep's value
   as_tsibble(index = month) |>
   select(month, rate)
 
