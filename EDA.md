@@ -10,4 +10,4 @@ Monthly, not seasonally adjusted, Jan 1994 to Aug 2026. Code: `04_eda.R`.
 
 ![STL decomposition](charts/stl_decomposition.png)
 
-![ACF of monthly changes](charts/acf/diff.png)
+![ACF of monthly changes](charts/acf_diff.png)
