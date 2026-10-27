@@ -25,3 +25,13 @@ acc <- accuracy(fc, un) |>              # score each forecast against the actual
   select(.model, RMSE, MAE, MAPE) |>    # keep the model name and 3 error measures (accuracy gives ~10)
   arrange(RMSE)                         # sort smallest error (best) first
 acc                                     # print the table
+
+
+
+fc |> filter(.model %in% c("ETS", "ARIMA", "SNaive")) |>        # top 3 models only
+  autoplot(un |> filter_index("2018 Jan" ~ .), level = NULL) +  # draw against actual data from 2018 on, no shaded ranges
+  labs(title = "ETS vs ARIMA vs seasonal naive, 2023–2026 test period",
+       y = "Rate (%)", x = NULL)
+
+ggsave("charts/model_comparison.png", width = 9, height = 5)
+
