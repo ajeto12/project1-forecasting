@@ -35,3 +35,39 @@ fc |> filter(.model %in% c("ETS", "ARIMA", "SNaive")) |>        # top 3 models o
 
 ggsave("charts/model_comparison.png", width = 9, height = 5)
 
+
+
+### DIAGNOSITCS
+
+fit |> select(ARIMA) |> gg_tsresiduals() # visual for misses, their distribution and the ACF
+
+# Ljung-Box
+
+augment(fit) |> filter(.model == "ARIMA") |> # p = 0.8 > 0.05, meaning there is no evidence of a leftover pattern
+  features(.innov, ljung_box, lag = 24)
+
+augment(fit) |> filter(.model == "SNaive") |> # p < 0.05, meaning that there is a leftover pattern detected
+  features(.innov, ljung_box, lag = 24)
+
+#Prediction Interval
+
+fc |> filter(.model == "ARIMA") |>
+  autoplot(un |> filter_index("2018 Jan" ~ .), level = c(80, 95)) # where we expect 80%, 95% obs to fall
+
+ggsave("charts/arima_intervals.png", width = 9, height = 5)
+
+
+fc |> filter(.model == "ARIMA") |> hilo(level = 95) |>
+  as_tibble() |> select(month, pi = `95%`) |> unpack_hilo(pi) |>
+  left_join(as_tibble(test), by = "month") |>
+  summarise(coverage = mean(rate >= pi_lower & rate <= pi_upper)) 
+
+#1 or 100% of obs. lie within 95% pi. 
+#We decide if this range is acceptable depending on circumstance
+#Budgeting may be too wide
+#Risk may prefer wide band for shock preparation
+
+
+
+
+
