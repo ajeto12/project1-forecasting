@@ -4,7 +4,7 @@ Best = SNaive, RMSE 0.91, MAE 0.75, MAPE 15.9%.
 
 This is the bar ETS/ARIMA must beat.
 
-
+![Benchmark forecasts vs actual, 2023–2026](charts/benchmarks.png)
 
 ## ETS and ARIMA (06_ets_arima.R), first look
 - Data now read from a local copy (SEAT653URN.csv); FRED was down for maintenance.
@@ -13,6 +13,8 @@ This is the bar ETS/ARIMA must beat.
   reverts to a long-run mean of ~5.3% (matches the 5.2% Power BI average).
 - Eyeball: ARIMA catches the 2025–26 rise in level but not seasonality;
   ETS looks like a slightly better SNaive. Accuracy table on Mon Oct 26.
+  
+![ETS and ARIMA forecasts vs actual](charts/ets_arima.png)
   
   
 ## Diagnostics (07_compare.R)
