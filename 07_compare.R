@@ -69,5 +69,25 @@ fc |> filter(.model == "ARIMA") |> hilo(level = 95) |>
 
 
 
+# --------- Final Forecast -----------
+
+un_nc <- un |> mutate(rate = if_else(month >= yearmonth("2020 Mar") &
+                                       month <= yearmonth("2021 Jun"), NA_real_,
+                                     rate))
+fit_all <- un |> model(ARIMA = ARIMA(rate))
+fit_nc <- un_nc |> model(ARIMA_noCOVID = ARIMA(rate))
+report(fit_all); report(fit_nc)
 
 
+bind_rows(forecast(fit_all, h = 12), forecast(fit_nc, h = 12)) |>
+  hilo(95) |> filter(month == max(month))
+
+
+
+forecast(fit_all, h = 12) |>
+  autoplot(un |> filter_index("2018 Jan" ~ .), level = c(80, 95)) +
+  labs(title = "Seattle unemployment: 12-month ARIMA forecast",
+       subtitle = "Monthly, not seasonally adjusted. Shaded: 80% and 95% prediction intervals",
+       y = "rate (%)", x = NULL, caption = "Source: FRED (SEAT653URN)")
+
+ggsave("charts/forecast_12m.png", width = 8, height = 4.5, dpi = 300)

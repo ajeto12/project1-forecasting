@@ -28,4 +28,13 @@ This is the bar ETS/ARIMA must beat.
 - For credit risk, it's a reasonable reminder that reserves should be ready for the next shock, not just sized for calm years.
   
 ![ARIMA forecast with 80% and 95% intervals](charts/arima_intervals.png)
+ 
+## Final Forecast
+![12-month forecast](charts/forecast_12m.png)
+ 
+ ARIMA(1,0,1)(0,0,2)[12] refit on all data (Jan 1994–Sep 2026). Sep 2027 forecast: 5.1% (95% range 1.5%–8.7%).
+ 
+**COVID caveat*:** When the 16 COVID months (Mar 2020–Jun 2021) are removed, the Sep 2027 forecast drops from 5.1% to 4.7% and the 95% range narrows by about a third (7.2 to 4.8 points), indicating much of the forecast’s uncertainty comes from that shock
+  
+**Credit-risk use:** For credit risk, a wide range is useful rather than a flaw. A lender may be wise to set loss reserves based on the expected 5.1% rate, then stress-test against the 8.7% upper bound of the 95% prediction interval to see how it would handle the next shock.  
   
