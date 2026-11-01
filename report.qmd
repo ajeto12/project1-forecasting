@@ -5,24 +5,29 @@ editor: visual
 ---
 
 ## Question
+
 - How accurately can time-series models forecast Seattle's unemployment rate 12 months ahead, and what range should a lender plan for when setting aside their loss reserves?
 - Why it matters: unemployment is a major driver of loan defaults, so lenders forecast it to size loss reserves.
 
 ## Data
+
 - SEAT653URN (FRED): Seattle unemployment, monthly, not seasonally adjusted, Jan 1994–Sep 2026
 - Oct 2025 missing (government shutdown); filled with `fill()`, carrying September forward
 
 ## Methods
+
 - EDA and STL decomposition: clear seasonal pattern; big shocks in 2001, 2008, 2020
 - Train through Dec 2022, test Jan 2023–Aug 2026 (44 months)
 - 4 benchmarks (Mean, Naive, SNaive, Drift) + ETS + ARIMA, scored on RMSE, MAE, MAPE
 
 ## Results
-- ARIMA won: RMSE 0.47 vs 0.91 for SNaive (~48% lower); MAPE 9.0% vs 15.9%
+
+- ARIMA won: RMSE 0.47 vs 0.91 for SNaive (\~48% lower); MAPE 9.0% vs 15.9%
 - Diagnostics: Ljung-Box p = 0.80 (residuals look like noise); all 44 test months inside the 95% interval
 - 12-month forecast: Sep 2027 = 5.1% (95% range 1.5–8.7%); see charts/forecast_12m.png
 
 ## Limitations
+
 - COVID widens the intervals; without it the range is about a third narrower
 - One series only, with no other economic drivers
 - Not seasonally adjusted; Oct 2025 value is filled, not real
