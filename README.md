@@ -1,6 +1,7 @@
 # Forecasting Seattle Unemployment for Credit Risk
 
 **Question:** How accurately can time-series models forecast Seattle's unemployment rate 12 months ahead, and what range should a lender plan for?
+
 **Answer:** An ARIMA model beat five alternatives on a 44-month holdout, with about half the error of the best simple benchmark. It forecasts about 5.1% unemployment in September 2027, with a 95% range of 1.5% to 8.8%.
 
 ![12-month ARIMA forecast with 80% and 95% prediction intervals](charts/forecast_12m.png)
